@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     },
     navBarLeft:{
         display: "inline-flex",
-        alignItems: "center"
+        alignItems: "center",
+        gap: '5%'
     },
     navBarRight:{
         display: "inline-flex",
@@ -42,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
     },
     navBarWrapper:{
         display: "inline-flex",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-around",
+        width: "100%"
     }
 }));
 
