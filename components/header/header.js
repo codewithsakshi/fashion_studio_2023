@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
-import Box from '@material-ui/core/Box';
-import { withStyles } from '@material-ui/core/styles';
+import {Box,Button} from '@material-ui/core';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,7 +19,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     headerWrapper: {
         display: "flex",
-        paddingTop: "8px",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
@@ -29,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
         },
         ["@media (max-width:450px)"]:{
             display: "none",
-        }
+        },
+        background: "rgb(247, 248, 247)",
     },
     navBarDepartments:{
         width: "100%",
@@ -52,6 +51,31 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "space-around",
         width: "100%"
+    },
+    navTitleLink:{
+        textDecoration: "none",
+        color: "Black",
+        "&:hover":{ 
+            color: "#303ab2",
+            fontFamily: "ProximaNova-Semibold"
+        }
+    },
+    searchBox:{
+        border: "none",
+        width: "250px",
+        height: "40px",
+        padding: "0 10px",
+        "&:focus-visible":{
+            outline: "none"
+        }
+    },
+    SiginOr:{
+        padding: "0 10px"
+    },
+    navBarRight:{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center"
     }
 }));
 
@@ -68,42 +92,41 @@ const Header = () => {
                         <Image alt="" src="https://i1.lmsin.net/website_images/ae/logos/header/logo-max.svg" width="100" height="100"/>
                     </a>
                 </Box>
-                
                 <ul className={classes.navBarDepartments}>
                     <li>
-                        <a href="/ae/en/department/women" title="women" data-title="women" class="nav-title-link">Women</a>
+                        <a href="/ae/en/department/women" title="women" data-title="women" className={classes.navTitleLink}>Women</a>
                     </li>
                     <li >
-                        <a href="/ae/en/department/mxkids" title="kids" data-title="kids" class="nav-title-link">Kids</a>
+                        <a href="/ae/en/department/mxkids" title="kids" data-title="kids" className={classes.navTitleLink}>Kids</a>
                     </li>
                     <li >
-                        <a href="/ae/en/department/men" title="men" data-title="men" class="nav-title-link">Men</a>
+                        <a href="/ae/en/department/men" title="men" data-title="men" className={classes.navTitleLink}>Men</a>
                     </li>
                     <li >
-                        <a href="/ae/en/department/beauty" title="beauty" data-title="beauty" class="nav-title-link">Beauty</a>
+                        <a href="/ae/en/department/beauty" title="beauty" data-title="beauty" className={classes.navTitleLink}>Beauty</a>
                     </li>
-                    <li onClick={() => router.push('/studio/feed')}>
+                    <li className={classes.navTitleLink} onClick={() => router.push('/studio/feed')}>
                         Studio
                     </li>
                 </ul>
-                <Box className={classes.searchBox}>
-                    <input type="text" id="js-site-search-input" class="form-control" name="q" maxlength="100" placeholder="What are you looking for?" autocomplete="off" data-options="{&quot;autocompleteUrl&quot; : &quot;/ae/en/search/autocomplete/SearchBox&quot;,&quot;minCharactersBeforeRequest&quot; : &quot;
+                <Box>
+                    <input className={classes.searchBox} type="text" id="js-site-search-input" class="form-control" name="q" maxlength="100" placeholder="What are you looking for?" autocomplete="off" data-options="{&quot;autocompleteUrl&quot; : &quot;/ae/en/search/autocomplete/SearchBox&quot;,&quot;minCharactersBeforeRequest&quot; : &quot;
                     3&quot;,&quot;waitTimeBeforeRequest&quot; : &quot;500&quot;,&quot;displayProductImages&quot; : true}"></input>
                 </Box>
             </Box>       
             <Box className={classes.navBarRight}>
                 <span className={classes.accountActions} id="account-actions">
-                    <a id="account-actions-signup" href="#" data-href="/ae/en/register" class="signin new" data-initiatedby="signup">Sign Up</a>
+                    <a className={classes.navTitleLink} id="account-actions-signup" href="#" data-href="/ae/en/register" class="signin new" data-initiatedby="signup">Sign Up</a>
                     <span className={classes.SiginOr}>or</span>
-                    <a id="account-actions-signin" href="#" data-href="/ae/en/login" class="signin flip-enable new" data-initiatedby="signin">Sign In</a>
+                    <a className={classes.navTitleLink} id="account-actions-signin" href="#" data-href="/ae/en/login" class="signin flip-enable new" data-initiatedby="signin">Sign In</a>
                 </span>
 
-                <button class="MuiButtonBase-root MuiButton-root MuiButton-text jss150" tabindex="0" type="button">
+                <Button class="MuiButtonBase-root MuiButton-root MuiButton-text jss150" tabindex="0" type="button">
                     <span class="MuiButton-label">
                         <div class="MuiBox-root jss154">Basket</div>
                         <Image alt="" src="https://i1.lmsin.net/website_images/static-pages/brand_exp/images/basket-black-24.svg" width="16" height="16"/>
                     </span>
-                </button>
+                </Button>
             </Box>
         </Box>
     </Box>
