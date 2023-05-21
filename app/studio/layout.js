@@ -4,8 +4,8 @@ import { Box, makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme)=>({
     mainContent: {
         width: "100%",
-        height: "660px",
-        background: "lightBlue",
+        height: "100%",
+        background: "#e6ebfa",
         display: "flex",
         justifyContent: "center",
         "&::-webkit-scrollbar": {
@@ -13,10 +13,11 @@ const useStyles = makeStyles((theme)=>({
         }
     },
     layout: {
-        height: "100%",
+        height: "660px",
         background: "white",
         borderRadius: "5px",
         overflowY: "scroll",
+        overflowX: "hidden",
         "&::-webkit-scrollbar": {
           display: "none"
         },

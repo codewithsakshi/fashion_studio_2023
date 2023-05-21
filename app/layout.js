@@ -1,11 +1,13 @@
 "use client"
 import { makeStyles } from "@material-ui/core";
+import '../public/static/max.css';
 const useStyles = makeStyles((theme)=>({
   body: {
     margin: "0",
     height: "100%",
     width: "100%",
-    overflow: "hidden"
+    overflow: "hidden",
+    fontFamily: "ProximaNova-Regular"
   }
 }));
 
