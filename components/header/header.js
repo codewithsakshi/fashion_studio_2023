@@ -19,11 +19,17 @@ import { makeStyles } from '@material-ui/core/styles';
   
 const useStyles = makeStyles((theme) => ({
     headerWrapper: {
-      display: "flex",
-      paddingTop: "8px",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%"
+        display: "flex",
+        paddingTop: "8px",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        ["@media (min-width:450px)"]: {
+            display: "block",
+        },
+        ["@media (max-width:450px)"]:{
+            display: "none",
+        }
     },
     navBarDepartments:{
         width: "100%",
