@@ -1,46 +1,45 @@
-"use client"
 import React from "react";
 import data from "@/utilities/data";
 import {Box,makeStyles,Button} from "@material-ui/core";
-import { useKeenSlider } from 'keen-slider/react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../../public/styles/post.css"
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
-const useStyles = makeStyles((theme)=>({
-  posts: {
-    marginTop: "45px"
-  },
+const useStyles = makeStyles(()=>({
   postList:{
     listStyle: "none",
     overflowY: "scroll",
     overflowX: "hidden",
-    padding: 0
+    padding: 0,
+    margin: 0
   },
   postHeader:{
     display: "flex",
-    position: "fixed",
+    position: "sticky",
     background: "rgb(247, 248, 247)",
     height: "45px",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "0 16px",
     zIndex: "5",
-    ["@media (min-width:450px) and (min-width:425px)"]: {
-      width: "27.9%",
-    },
-    ["@media (max-width:450px)"]:{
-      width: "100%",
-    }
+    width: "100%",
+    top: "0"
   },
   headerLeft:{
     display: "flex",
     gap: "10px",
-    alignItems: "center"
+    alignItems: "center",
+    marginLeft: "16px"
   },
   headerRight:{
     display: "flex",
-    gap: "10px"
+    gap: "10px",
+    marginRight: "16px",
   },
   headerText:{
-    fontSize: "14px",
+    fontSize: "16px",
     fontFamily: "ProximaNova-Semibold",
   },
   headerIcon:{
@@ -73,7 +72,7 @@ const useStyles = makeStyles((theme)=>({
     flexDirection: "row"
   },
   mediaImg:{
-    width: "455px"
+    width: "100%"
   },
   shopAllIcon:{
     display: "inline-flex",
@@ -88,20 +87,6 @@ const useStyles = makeStyles((theme)=>({
 export default function Posts() {
   const classes = useStyles();
   const { feed } = data;
-
-  console.log(feed);
-
-  const [sliderRef, instanceRef] = useKeenSlider(
-    {
-      slideChanged() {
-        console.log('slide changed')
-      },
-    },
-    [
-      // add plugins here
-    ]
-  );
-
   return (
     <>
       <Box className={classes.postHeader}>
@@ -128,7 +113,7 @@ export default function Posts() {
               <Box  className={classes.eachPost}>
                 <Box className={classes.eachPostHeader}>
                   <Box className={classes.profileIcon}>
-                    <img width="38" height="38" draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_32,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png" loading="lazy" srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1233w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1080w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 750w"/>
+                    <img alt="" width="38" height="38" draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_32,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png" loading="lazy" srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1233w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1080w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 750w"/>
                   </Box>
                   <Box className={classes.nameAndTime}>
                     <Box className={classes.profileName}>Yash Katyal</Box>
@@ -138,35 +123,46 @@ export default function Posts() {
                   <Button className={classes.followBtn}>Follow</Button>
                 </Box>
                 <Box className={classes.media}>
-                  <div ref={sliderRef} className="keen-slider" style={{display: "flex"}}>
-                    <div className="keen-slider__slide">
-                        <picture style={{height: "100%",width: "50%"}}>
+                  <>
+                    <Swiper
+                      cssMode={true}
+                      navigation={false}
+                      pagination={true}
+                      mousewheel={true}
+                      keyboard={true}
+                      modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                      className="mySwiper"
+                    >
+                      <SwiperSlide className={classes.sliderImage}> <picture>
                           <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
-                          <img className={classes.mediaImg} draggable="false" alt="" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
                           srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
-                        </picture>
-                    </div>
-                    <div className="keen-slider__slide"> 
-                        <picture style={{height: "100%"}}>
+                        </picture></SwiperSlide>
+                      <SwiperSlide> <picture>
                           <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
-                          <img className={classes.mediaImg} draggable="false" alt="" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
                           srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
-                        </picture>     
-                    </div>
-                    <div className="keen-slider__slide">
-                        <picture style={{height: "100%"}}>
+                        </picture></SwiperSlide>
+                      <SwiperSlide> <picture>
                           <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
-                          <img className={classes.mediaImg} draggable="false" alt="" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
                           srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
-                        </picture>
-                    </div>
-                  </div>
+                        </picture></SwiperSlide>
+                      <SwiperSlide> <picture>
+                          <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
+                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
+                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
+                        </picture></SwiperSlide>
+                    </Swiper>
+                  </>
                 </Box>
                 <Box className={classes.taggedProducts}>
                   <Box className={classes.shopAll}>
@@ -181,7 +177,7 @@ export default function Posts() {
               <Box className={classes.eachPost}>
                 <Box className={classes.eachPostHeader}>
                   <Box className={classes.profileIcon}>
-                    <img width="38" height="38" draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_32,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png" loading="lazy" srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1233w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1080w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 750w"/>
+                    <img alt="" width="38" height="38" draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_32,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png" loading="lazy" srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1233w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 1080w,https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2022/4/7/97edabd0-dbeb-4107-8a1e-19be888d19481649318363022-Yash-Katyal.png 750w"/>
                   </Box>
                   <Box className={classes.nameAndTime}>
                     <Box className={classes.profileName}>Yash Katyal</Box>
@@ -191,35 +187,52 @@ export default function Posts() {
                   <Button className={classes.followBtn}>Follow</Button>
                 </Box>
                 <Box className={classes.media}>
-                  <div ref={sliderRef} className="keen-slider" style={{display: "flex"}}>
-                    <div className="keen-slider__slide">
-                        <picture style={{height: "100%",width: "50%"}}>
+                  <>
+                    <Swiper
+                      cssMode={true}
+                      navigation={false}
+                      pagination={true}
+                      mousewheel={true}
+                      keyboard={true}
+                      modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                      className="mySwiper"
+                    >
+                      <SwiperSlide> 
+                        <picture>
                           <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
-                          <img className={classes.mediaImg} draggable="false" alt="" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
+                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
+                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
+                        </picture></SwiperSlide>
+                      <SwiperSlide> 
+                        <picture>
+                          <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
+                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
+                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
+                        </picture></SwiperSlide>
+                      <SwiperSlide> 
+                        <picture>
+                          <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
                           srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
                         </picture>
-                    </div>
-                    <div className="keen-slider__slide"> 
-                        <picture style={{height: "100%"}}>
+                      </SwiperSlide>
+                      <SwiperSlide> 
+                        <picture>
                           <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
-                          <img className={classes.mediaImg} draggable="false" alt="" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
-                          srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
-                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
-                          https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
-                        </picture>     
-                    </div>
-                    <div className="keen-slider__slide">
-                        <picture style={{height: "100%"}}>
-                          <source type="image/webp" srcset="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg"/>
-                          <img className={classes.mediaImg} draggable="false" alt="" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
+                          <img alt="" className={classes.mediaImg} draggable="false" src="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_400,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg" loading="lazy" 
                           srcset="https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.8,w_411,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1233w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.5,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 1080w,
                           https://assets.myntassets.com/f_auto,q_auto:eco,dpr_1.3,w_360,c_limit,fl_progressive/assets/images/2023/5/18/668b3305-0b5a-41bb-817d-4685e7bf6ad51684399902160-CF91394E-BD29-4F72-9882-46DE317D543A.jpeg 750w"/>
                         </picture>
-                    </div>
-                  </div>
+                      </SwiperSlide>
+                    </Swiper>
+                  </>
                 </Box>
                 <Box className={classes.taggedProducts}>
                   <Box className={classes.shopAll}>

@@ -1,4 +1,3 @@
-"use client";
 import React from 'react';
 import {Box,Button} from '@material-ui/core';
 import { useRouter } from 'next/navigation';
@@ -16,7 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 //     homebox: '#242428'
 // };
   
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     headerWrapper: {
         display: "flex",
         justifyContent: "center",
@@ -57,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
         color: "Black",
         "&:hover":{ 
             color: "#303ab2",
-            fontFamily: "ProximaNova-Semibold"
         }
     },
     searchBox:{

@@ -1,9 +1,8 @@
-"use client"
 import React from "react";
 import data from "@/utilities/data";
 import { Box, Button, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles(()=>({
   profilePage:{
     display: "flex",
     flexDirection:"column",

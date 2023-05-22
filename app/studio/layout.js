@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme)=>({
         }
     },
     layout: {
-        height: "660px",
         background: "white",
         borderRadius: "5px",
         overflowY: "scroll",
@@ -23,10 +22,12 @@ const useStyles = makeStyles((theme)=>({
         },
         ["@media (min-width:450px) and (min-width:425px)"]: {
             width: "30%",
-            marginTop: "20px"
+            marginTop: "20px",
+            height: "calc(100vh - 120px)"
         },
         ["@media (max-width:450px)"]:{
             width: "100%",
+            height: "100vh"
         }
     }
 }))
