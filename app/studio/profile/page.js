@@ -1,7 +1,10 @@
-export default function Profile() {
+"use client"
+import Profile from "@/components/profile/profile";
+import { Box } from "@material-ui/core";
+export default function Feed() {
     return (
-    <div>
-      <h1>Welcome to Fashion Studio Profile Page</h1>
-    </div>
+    <Box display={"flex"} justifyContent={"center"}>
+      <Profile/>
+    </Box>
     )
-  }
+}
