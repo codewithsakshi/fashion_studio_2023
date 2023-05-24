@@ -1,7 +1,7 @@
 "use client"
 import Header from "@/components/header/header";
 import { Box, makeStyles } from "@material-ui/core";
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles(()=>({
     mainContent: {
         width: "100%",
         height: "100%",

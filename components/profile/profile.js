@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import data from "@/utilities/data";
 import { Box, Button, makeStyles } from "@material-ui/core";
