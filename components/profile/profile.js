@@ -180,8 +180,8 @@ export default function Profile() {
             <Box className={classes.profileTab}>Recommended Products</Box>
           </Box>
           <Box className={classes.recommendedProducts}>
-            {products.map(product=>(
-              <Box className={classes.eachProduct}>
+            {products.map((product,index)=>(
+              <Box key={index} className={classes.eachProduct}>
                 <Box className={classes.productImageContainer}>
                   <img className={classes.productImage} draggable="false" src={product.searchImage} loading="lazy"/>
                 </Box>
