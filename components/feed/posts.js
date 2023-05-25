@@ -268,8 +268,8 @@ export default function Posts() {
                         { contentProps.productPills.map((item,index)=>(
                            <li key={index} className={classes.pillItem}>
                             <picture>
-                              <source type="image/webp" srcset={item.searchImage}/>
-                              <img width="63" height="85" alt="" draggable="false" src={item.searchImage} loading="lazy" />
+                              <source type="image/webp" srcset={item.searchImage.replace("http","https")}/>
+                              <img width="63" height="85" alt="" draggable="false" src={item.searchImage.replace("http","https")} loading="lazy" />
                             </picture>
                             <Box className={classes.productDetails}>
                                 <Box className={classes.prdName}>
