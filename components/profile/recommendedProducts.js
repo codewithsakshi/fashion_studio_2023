@@ -1,100 +1,30 @@
 "use client";
 import React from "react";
 import data from "@/utilities/data";
-import { Box, Button, makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles(() => ({
-  recommendedProducts: {
-    display: "flex",
-    flexWrap: "wrap",
-    cursor: "pointer",
-  },
-  eachProduct: {
-    width: "49.6%",
-    borderBottom: "1px solid rgb(214, 219, 227)",
-    "&:nth-child(odd)": {
-      borderRight: "1px solid rgb(214, 219, 227)",
-    },
-  },
-  productImageContainer: {
-    height: "264px",
-  },
-  productImage: {
-    height: "100%",
-    width: "100%",
-    objectFit: "cover",
-  },
-  productInfoContainer: {
-    padding: "10px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "3px",
-  },
-  productInfo: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-  },
-  productName: {
-    fontWeight: "900",
-    fontSize: "14px",
-    textOverflow: "ellipsis",
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    fontFamily: "ProximaNova-Semibold",
-  },
-  wishList: {
-    display: "flex",
-  },
-  productDescription: {
-    fontWeight: "200",
-    color: "rgb(148, 150, 159)",
-    fontSize: "12px",
-    textOverflow: "ellipsis",
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-  },
-  productPriceContainer: {
-    display: "flex",
-    fontSize: "12px",
-    gap: "4px",
-  },
-  productPrice: {
-    textDecorationLine: "line-through",
-    color: "rgb(148, 150, 159)",
-  },
-  productDiscountedPrice: {
-    color: "rgb(40, 44, 63)",
-    fontWeight: "900",
-  },
-  productOfferPercentage: {
-    color: "rgb(255, 87, 34)",
-  },
-}));
+import { Box } from "@material-ui/core";
+import styles from "../../styles/Profile.module.css";
 
 export default function RecommendedProducts() {
-  const classes = useStyles();
   const { recommended_products } = data;
   const products =
     recommended_products?.response?.components[0]?.props?.contentProps?.items;
-  console.log("products", products);
   return (
     <>
-      <Box className={classes.recommendedProducts}>
+      <Box className={styles.recommendedProducts}>
         {products.map((product, index) => (
-          <Box key={index} className={classes.eachProduct}>
-            <Box className={classes.productImageContainer}>
+          <Box key={index} className={styles.eachProduct}>
+            <Box className={styles.productImageContainer}>
               <img
-                className={classes.productImage}
+                className={styles.productImage}
                 draggable="false"
                 src={product.searchImage}
                 loading="lazy"
               />
             </Box>
-            <Box className={classes.productInfoContainer}>
-              <Box className={classes.productInfo}>
-                <Box className={classes.productName}>{product.brand}</Box>
-                <Box className={classes.wishList}>
+            <Box className={styles.productInfoContainer}>
+              <Box className={styles.productInfo}>
+                <Box className={styles.productName}>{product.brand}</Box>
+                <Box className={styles.wishList}>
                   {" "}
                   <svg
                     width="15"
@@ -111,17 +41,17 @@ export default function RecommendedProducts() {
                   </svg>
                 </Box>
               </Box>
-              <Box className={classes.productDescription}>
+              <Box className={styles.productDescription}>
                 {product.productName}
               </Box>
-              <Box className={classes.productPriceContainer}>
-                <Box className={classes.productPrice}>
+              <Box className={styles.productPriceContainer}>
+                  <Box className={styles.productPrice}>
                   AED {Math.round(product.mrp / 22)}
                 </Box>
-                <Box className={classes.productDiscountedPrice}>
+                <Box className={styles.productDiscountedPrice}>
                   AED {Math.round(product.price / 22)}
                 </Box>
-                <Box className={classes.productOfferPercentage}>
+                <Box className={styles.productOfferPercentage}>
                   {product.discountDisplayLabel}
                 </Box>
               </Box>

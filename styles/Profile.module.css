@@ -1,0 +1,212 @@
+.recommendedProducts {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.eachProduct {
+    width: 49.6%;
+    border-bottom: 1px solid rgb(214, 219, 227);
+}
+
+.eachProduct:nth-child(odd) {
+    border-right: 1px solid rgb(214, 219, 227);
+}
+
+.productImageContainer {
+    height: 264px
+}
+
+.productImage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.productInfoContainer {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.productInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.productName {
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: ProximaNova-Semibold;
+}
+
+.wishList {
+    display: flex;
+}
+
+.productDescription {
+    font-weight: 200;
+    color: rgb(148, 150, 159);
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.productPriceContainer {
+    display: flex;
+    font-size: 12px;
+    gap: 4px;
+}
+
+.productPrice {
+    text-decoration-line: line-through;
+    color: rgb(148, 150, 159);
+}
+
+.productDiscountedPrice {
+    color: rgb(40, 44, 63);
+    font-weight: 900;
+}
+
+.productOfferPercentage {
+    color: rgb(255, 87, 34);
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    height: 450px !important;
+    justify-content: flex-end;
+    color: White;
+}
+
+.profileImageContainer {
+    height: 450px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.profileImage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.profileContent {
+    display: flex;
+    z-index: 1;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+    padding: 15px 12px;
+    flex-direction: column;
+}
+
+.profileInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.profileText {
+    display: flex;
+    flex-direction: Column;
+    color: White;
+    width: 70%;
+}
+
+.profileName {
+    font-size: 24px;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.profileHandle {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.followers {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.postHeader {
+    display: flex;
+    position: sticky;
+    background: rgb(247, 248, 247);
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 5;
+    width: 100%;
+    top: 0;
+}
+
+.headerLeft {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.headerRight {
+    display: flex;
+    gap: 10px;
+    margin-right: 16px;
+}
+
+.headerText {
+    font-size: 16px;
+    font-family: ProximaNova-Semibold;
+    display: flex;
+}
+
+.headerIcon {
+    margin-top: 5px;
+}
+
+.eachPostHeader {
+    display: flex;
+    padding: 12px;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.profileTabs {
+    display: flex;
+    position: sticky;
+    top: 60px;
+    background: white;
+    z-index: 11;
+}
+
+.postTabSelected {
+    padding: 12px 15px;
+    border-bottom: 2px solid #3f51b5;
+    color: #3f51b5;
+    ;
+    font-family: ProximaNova-Semibold;
+}
+
+.postTabNotSelected {
+    padding: 12px 15px;
+}

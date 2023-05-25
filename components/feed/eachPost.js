@@ -8,206 +8,27 @@ import "swiper/css/pagination";
 import "../../public/styles/post.css";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import parse from "html-react-parser";
-
-const useStyles = makeStyles(() => ({
-  postList: {
-    listStyle: "none",
-    overflowY: "scroll",
-    overflowX: "hidden",
-    padding: 0,
-    margin: 0,
-  },
-  postHeader: {
-    display: "flex",
-    position: "sticky",
-    background: "rgb(247, 248, 247)",
-    height: "60px",
-    alignItems: "center",
-    justifyContent: "space-between",
-    zIndex: "5",
-    width: "100%",
-    top: "0",
-  },
-  headerLeft: {
-    display: "flex",
-    gap: "10px",
-    alignItems: "center",
-    marginLeft: "16px",
-  },
-  headerRight: {
-    display: "flex",
-    gap: "10px",
-    marginRight: "16px",
-  },
-  headerText: {
-    fontSize: "16px",
-    fontFamily: "ProximaNova-Semibold",
-    display: "flex",
-  },
-  headerIcon: {
-    marginTop: "5px",
-  },
-  eachPostHeader: {
-    display: "flex",
-    padding: "12px",
-    alignItems: "flex-start",
-    gap: "8px",
-  },
-  profileName: {
-    fontFamily: "ProximaNova-Semibold",
-  },
-  postTime: {
-    fontSize: "12px",
-  },
-  followBtn: {
-    fontFamily: "ProximaNova-Semibold",
-    color: "#303ab2",
-    textTransform: "capitalize",
-    padding: "0",
-    justifyContent: "flex-start",
-    "&:hover": {
-      background: "transparent",
-    },
-  },
-  media: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  mediaImg: {
-    width: "100%",
-  },
-  taggedProducts: {
-    display: "flex",
-    gap: "10px",
-    alignItems: "center",
-    fontSize: "14px",
-    paddingLeft: "12px",
-    paddingBottom: "10px",
-  },
-  shopAllIcon: {
-    display: "inline-flex",
-    borderRadius: "20px",
-    borderColor: "#303ab2",
-    height: "fit-content",
-    width: "fit-content",
-    border: "2px solid #303ab2",
-    padding: "5px",
-  },
-  pillItem: {
-    display: "inline-flex",
-    gap: "8px",
-    border: "2px solid #ecedeb",
-    padding: "5px",
-    alignItems: "center",
-    borderRadius: "5px",
-  },
-  shopAllText: {
-    color: "#303ab2",
-    fontFamily: "ProximaNova-Semibold",
-  },
-  shopAll: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "10px",
-    fontSize: "14px",
-    whiteSpace: "nowrap",
-  },
-  discountAndRating: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexGrow: 1,
-    gap: "20px",
-  },
-  prdName: {
-    fontWeight: "600",
-    fontSize: "15px",
-  },
-  prdPrice: {
-    display: "flex",
-    fontSize: "14px",
-    gap: "4px",
-  },
-  discountPrice: {
-    textDecoration: "line-through",
-    color: "lightslategrey",
-  },
-  salePrice: {
-    fontFamily: "ProximaNova-Semibold",
-  },
-  productDetails: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-  },
-  rating: {
-    fontFamily: "ProximaNova-Semibold",
-    marginRight: "5px",
-  },
-  discount: {
-    fontFamily: "ProximaNova-Semibold",
-    color: "#FF5722",
-  },
-  ratingStar: {
-    marginLeft: "4px",
-  },
-  ulProductPill: {
-    display: "flex",
-    listStyle: "none",
-    overflow: "hidden",
-    overflowX: "scroll",
-    padding: 0,
-    margin: 0,
-    whiteSpace: "nowrap",
-    gap: "10px",
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-  },
-  likePost: {
-    display: "inline-flex",
-    gap: "4px",
-    alignItems: "center",
-  },
-  likeAndSavePost: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "0 12px",
-    alignItems: "center",
-    alignContent: "center",
-  },
-  postCaptionWithHashtags: {
-    padding: "8px 12px",
-    lineHeight: "1.5",
-  },
-  hashtags: {
-    fontFamily: "ProximaNova-Semibold",
-  },
-  profileIconImg: {
-    borderRadius: "50%",
-  },
-}));
+import styles from "../../styles/Feed.module.css";
 
 export default function EachPost() {
-  const classes = useStyles();
   const { feed } = data;
   const myInstaPosts = Array.from(feed.components)
     .filter((item) => item.type === "MynstaPost")
     .filter((item) => item.props.contentProps.elementId != "POST_VIDEO");
   return (
-    <Box className={classes.posts}>
-      <ul className={classes.postList}>
+    <Box className={styles.posts}>
+      <ul className={styles.postList}>
         {myInstaPosts.map((item, index) => {
           const prodGallery = item.props.contentProps.media || [];
           const titleProps = item.props.titleProps;
           const contentProps = item.props.contentProps;
           return (
-            <li key={index} className={classes.listItem}>
-              <Box className={classes.eachPost}>
-                <Box className={classes.eachPostHeader}>
-                  <Box className={classes.profileIcon}>
+            <li key={index} className={styles.listItem}>
+              <Box className={styles.eachPost}>
+                <Box className={styles.eachPostHeader}>
+                  <Box className={styles.profileIcon}>
                     <img
-                      className={classes.profileIconImg}
+                      className={styles.profileIconImg}
                       alt=""
                       width="38"
                       height="38"
@@ -215,11 +36,11 @@ export default function EachPost() {
                       src={titleProps.author.profileImage.src}
                     />
                   </Box>
-                  <Box className={classes.nameAndTime}>
-                    <Box className={classes.profileName}>
+                  <Box className={styles.nameAndTime}>
+                    <Box className={styles.profileName}>
                       {titleProps.author.name}
                     </Box>
-                    <Box className={classes.postTime}>
+                    <Box className={styles.postTime}>
                       {titleProps.subTitle}
                     </Box>
                   </Box>
@@ -233,9 +54,9 @@ export default function EachPost() {
                   >
                     ⬤
                   </Box>
-                  <Button className={classes.followBtn}>Follow</Button>
+                  <Button className={styles.followBtn}>Follow</Button>
                 </Box>
-                <Box className={classes.media}>
+                <Box className={styles.media}>
                   <>
                     <Swiper
                       cssMode={true}
@@ -249,13 +70,13 @@ export default function EachPost() {
                       {prodGallery.map((item, index) => (
                         <SwiperSlide
                           key={index}
-                          className={classes.sliderImage}
+                          className={styles.sliderImage}
                         >
                           <picture>
                             <source type="image/webp" srcset={item.src} />
                             <img
                               alt=""
-                              className={classes.mediaImg}
+                              className={styles.mediaImg}
                               draggable="false"
                               src={item.src}
                               loading="lazy"
@@ -282,9 +103,9 @@ export default function EachPost() {
                     </Swiper>
                   </>
                 </Box>
-                <Box className={classes.taggedProducts}>
-                  <Box className={classes.shopAll}>
-                    <Box className={classes.shopAllIcon}>
+                <Box className={styles.taggedProducts}>
+                  <Box className={styles.shopAll}>
+                    <Box className={styles.shopAllIcon}>
                       <svg
                         width="25"
                         height="25"
@@ -305,11 +126,11 @@ export default function EachPost() {
                         </g>
                       </svg>
                     </Box>
-                    <Box className={classes.shopAllText}>SHOP ALL</Box>
+                    <Box className={styles.shopAllText}>SHOP ALL</Box>
                   </Box>
-                  <ul className={classes.ulProductPill}>
+                  <ul className={styles.ulProductPill}>
                     {contentProps.productPills.map((item, index) => (
-                      <li key={index} className={classes.pillItem}>
+                      <li key={index} className={styles.pillItem}>
                         <picture>
                           <source
                             type="image/webp"
@@ -324,26 +145,26 @@ export default function EachPost() {
                             loading="lazy"
                           />
                         </picture>
-                        <Box className={classes.productDetails}>
-                          <Box className={classes.prdName}>{item.brand}</Box>
-                          <Box className={classes.prdPrice}>
+                        <Box className={styles.productDetails}>
+                          <Box className={styles.prdName}>{item.brand}</Box>
+                          <Box className={styles.prdPrice}>
                             <span
-                              className={classes.discountPrice}
+                              className={styles.discountPrice}
                             >{`AED ${parseInt(item.mrp / 22)}`}</span>
                             <span
-                              className={classes.salePrice}
+                              className={styles.salePrice}
                             >{`AED ${parseInt(item.price / 22)}`}</span>
                           </Box>
-                          <Box className={classes.discountAndRating}>
-                            <Box className={classes.discount}>
+                          <Box className={styles.discountAndRating}>
+                            <Box className={styles.discount}>
                               {item.displayDiscountLabel &&
                                 item.displayDiscountLabel
                                   .replace("(", "")
                                   .replace(")", "")}
                             </Box>
-                            <Box className={classes.rating}>
+                            <Box className={styles.rating}>
                               {item.rating ? item.rating : ""}
-                              <span className={classes.ratingStar}>
+                              <span className={styles.ratingStar}>
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 24 24"
@@ -363,8 +184,8 @@ export default function EachPost() {
                     ))}
                   </ul>
                 </Box>
-                <Box className={classes.likeAndSavePost}>
-                  <Box className={classes.likePost}>
+                <Box className={styles.likeAndSavePost}>
+                  <Box className={styles.likePost}>
                     {item.props.contentProps.isLiked != "NONE" ? (
                       <svg
                         width="24"
@@ -408,11 +229,11 @@ export default function EachPost() {
                         </g>
                       </svg>
                     )}
-                    <Box className={classes.likeCount}>
+                    <Box className={styles.likeCount}>
                       {item.props.contentProps.likeCount}
                     </Box>
                   </Box>
-                  <Box className={classes.savePost}>
+                  <Box className={styles.savePost}>
                     {!item.props.contentProps.isBookmarked ? (
                       <svg
                         width="26"
@@ -460,8 +281,8 @@ export default function EachPost() {
                     )}
                   </Box>
                 </Box>
-                <Box className={classes.postCaptionWithHashtags}>
-                  <span className={classes.postCaption}>
+                <Box className={styles.postCaptionWithHashtags}>
+                  <span className={styles.postCaption}>
                     {parse(
                       item.props.contentProps.text.replaceAll("myntra", "max")
                     )}

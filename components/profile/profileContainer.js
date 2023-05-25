@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Box, Button, makeStyles } from "@material-ui/core";
+import styles from "../../styles/Profile.module.css";
 
 const useStyles = makeStyles(() => ({
   profileContainer: {
@@ -66,20 +67,20 @@ export default function ProfileContainer() {
   const classes = useStyles();
   return (
     <>
-      <Box className={classes.profileContainer}>
-        <Box className={classes.profileImageContainer}>
+      <Box className={styles.profileContainer}>
+        <Box className={styles.profileImageContainer}>
           <img
-            className={classes.profileImage}
+            className={styles.profileImage}
             alt=""
             draggable="false"
             src="https://assets.myntassets.com/w_400,h_444,q_50,dpr_2,fl_progressive/assets/images/2020/10/27/50c49976-be28-4796-806e-711b2d7906ef1603774247204-croppedImage-1603774245263.jpg"
           />
         </Box>
-        <Box className={classes.profileContent}>
-          <Box className={classes.profileInfo}>
-            <Box className={classes.profileText}>
-              <Box className={classes.profileName}>Divyanshi Tripathi</Box>
-              <Box className={classes.profileHandle}>@divyanshiTripathi</Box>
+        <Box className={styles.profileContent}>
+          <Box className={styles.profileInfo}>
+            <Box className={styles.profileText}>
+              <Box className={styles.profileName}>Divyanshi Tripathi</Box>
+              <Box className={styles.profileHandle}>@divyanshiTripathi</Box>
             </Box>
             <Box>
               <Button
@@ -92,7 +93,7 @@ export default function ProfileContainer() {
               </Button>
             </Box>
           </Box>
-          <Box className={classes.followers}>
+          <Box className={styles.followers}>
             <Box sx={{ fontWeight: 900 }}>9.4k</Box>
             <Box sx={{ fontWeight: 100 }}>Followers</Box>
             <div

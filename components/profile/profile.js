@@ -1,83 +1,23 @@
 "use client";
 import React, { useState } from "react";
 import data from "@/utilities/data";
-import { makeStyles, Box } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import RecommendedProducts from "./recommendedProducts";
 import ProfileContainer from "./profileContainer";
 import EachPost from "../feed/eachPost";
-
-const useStyles = makeStyles(() => ({
-  profilePage: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-  },
-  postHeader: {
-    display: "flex",
-    position: "sticky",
-    background: "rgb(247, 248, 247)",
-    height: "60px",
-    alignItems: "center",
-    justifyContent: "space-between",
-    zIndex: "5",
-    width: "100%",
-    top: "0",
-  },
-  headerLeft: {
-    display: "flex",
-    gap: "10px",
-    alignItems: "center",
-    marginLeft: "16px",
-  },
-  headerRight: {
-    display: "flex",
-    gap: "10px",
-    marginRight: "16px",
-  },
-  headerText: {
-    fontSize: "16px",
-    fontFamily: "ProximaNova-Semibold",
-    display: "flex",
-  },
-  headerIcon: {
-    marginTop: "5px",
-  },
-  eachPostHeader: {
-    display: "flex",
-    padding: "12px",
-    alignItems: "flex-start",
-    gap: "8px",
-  },
-  profileTabs: {
-    display: "flex",
-    position: "sticky",
-    top: "60px",
-    background: "white",
-    zIndex: "11",
-  },
-  postTabSelected: {
-    padding: "12px 15px",
-    borderBottom: "2px solid #3f51b5",
-    color: "#3f51b5;",
-    fontFamily: "ProximaNova-Semibold",
-  },
-  postTabNotSelected: {
-    padding: "12px 15px",
-  },
-}));
+import styles from "../../styles/Profile.module.css";
 
 export default function Profile() {
-  const classes = useStyles();
   const { recommended_products } = data;
   const [isPostTabSelected, setIsPostTabSelected] = useState(true);
   const products =
     recommended_products?.response?.components[0]?.props?.contentProps?.items;
   return (
     <>
-      <div className={classes.profilePage}>
-        <Box className={classes.postHeader}>
-          <Box className={classes.headerLeft}>
-            <Box className={classes.headerIcon}>
+      <div className={styles.profilePage}>
+        <Box className={styles.postHeader}>
+          <Box className={styles.headerLeft}>
+            <Box className={styles.headerIcon}>
               <svg
                 class="header-icon menu-icon"
                 width="24"
@@ -91,7 +31,7 @@ export default function Profile() {
                 ></path>
               </svg>
             </Box>
-            <Box className={classes.headerText}>
+            <Box className={styles.headerText}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="150"
@@ -123,8 +63,8 @@ export default function Profile() {
               </svg>
             </Box>
           </Box>
-          <Box className={classes.headerRight}>
-            <Box className={classes.headerIcon}>
+          <Box className={styles.headerRight}>
+            <Box className={styles.headerIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -143,7 +83,7 @@ export default function Profile() {
                 </g>
               </svg>
             </Box>
-            <Box className={classes.headerIcon}>
+            <Box className={styles.headerIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -167,12 +107,12 @@ export default function Profile() {
           </Box>
         </Box>
         <ProfileContainer></ProfileContainer>
-        <div className={classes.profileTabs}>
+        <div className={styles.profileTabs}>
           <div
             className={
               isPostTabSelected
-                ? classes.postTabSelected
-                : classes.postTabNotSelected
+                ? styles.postTabSelected
+                : styles.postTabNotSelected
             }
             onClick={() => {
               setIsPostTabSelected(true);
@@ -183,8 +123,8 @@ export default function Profile() {
           <div
             className={
               isPostTabSelected
-                ? classes.postTabNotSelected
-                : classes.postTabSelected
+                ? styles.postTabNotSelected
+                : styles.postTabSelected
             }
             onClick={() => {
               setIsPostTabSelected(false);

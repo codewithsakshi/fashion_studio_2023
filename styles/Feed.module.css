@@ -1,0 +1,209 @@
+.postList {
+    list-style: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.postHeader {
+    display: flex;
+    position: sticky;
+    background: rgb(247, 248, 247);
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 5;
+    width: 100%;
+    top: 0;
+}
+
+.headerLeft {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.headerRight {
+    display: flex;
+    gap: 10px;
+    margin-right: 16px;
+}
+
+.headerText {
+    font-size: 16px;
+    font-family: ProximaNova-Semibold;
+    display: flex;
+}
+
+.headerIcon {
+    margin-top: 5px;
+}
+
+.eachPostHeader {
+    display: flex;
+    padding: 12px;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.profileName {
+    font-family: ProximaNova-Semibold;
+}
+
+.postTime {
+    font-size: 12px;
+}
+
+.followBtn {
+    font-family: ProximaNova-Semibold;
+    color: #303ab2;
+    text-transform: capitalize;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.followBtn:hover {
+    background: transparent;
+}
+
+.media {
+    display: flex;
+    flex-direction: row;
+}
+
+.mediaImg {
+    width: 100%;
+}
+
+.taggedProducts {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    padding-left: 12px;
+    padding-bottom: 10px;
+}
+
+.shopAllIcon {
+    display: inline-flex;
+    border-radius: 20px;
+    border-color: #303ab2;
+    height: fit-content;
+    width: fit-content;
+    border: 2px solid #303ab2;
+    padding: 5px;
+}
+
+.pillItem {
+    display: inline-flex;
+    gap: 8px;
+    border: 2px solid #ecedeb;
+    padding: 5px;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.shopAllText {
+    color: #303ab2;
+    font-family: ProximaNova-Semibold;
+}
+
+.shopAll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.discountAndRating {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 20px;
+}
+
+.prdName {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.prdPrice {
+    display: flex;
+    font-size: 14px;
+    gap: 4px;
+}
+
+.discountPrice {
+    text-decoration: line-through;
+    color: lightslategrey;
+}
+
+.salePrice {
+    font-family: ProximaNova-Semibold;
+}
+
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rating {
+    font-family: ProximaNova-Semibold;
+    margin-right: 5px;
+}
+
+.discount {
+    font-family: ProximaNova-Semibold;
+    color: #FF5722;
+}
+
+.ratingStar {
+    margin-left: 4px;
+}
+
+.ulProductPill {
+    display: flex;
+    list-style: none;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    gap: 10px;
+}
+
+.ulProductPill::-webkit-scrollbar {
+    display: none;
+}
+
+.likePost {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.likeAndSavePost {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    align-items: center;
+    align-content: center;
+}
+
+.postCaptionWithHashtags {
+    padding: 8px 12px;
+    line-height: 1.5;
+}
+
+.hashtags {
+    font-family: ProximaNova-Semibold;
+}
+
+.profileIconImg {
+    border-radius: 50%;
+}

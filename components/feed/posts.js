@@ -9,197 +9,19 @@ import "../../public/styles/post.css";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import parse from "html-react-parser";
 import EachPost from "./eachPost";
-
-const useStyles = makeStyles(() => ({
-  postList: {
-    listStyle: "none",
-    overflowY: "scroll",
-    overflowX: "hidden",
-    padding: 0,
-    margin: 0,
-  },
-  postHeader: {
-    display: "flex",
-    position: "sticky",
-    background: "rgb(247, 248, 247)",
-    height: "60px",
-    alignItems: "center",
-    justifyContent: "space-between",
-    zIndex: "5",
-    width: "100%",
-    top: "0",
-  },
-  headerLeft: {
-    display: "flex",
-    gap: "10px",
-    alignItems: "center",
-    marginLeft: "16px",
-  },
-  headerRight: {
-    display: "flex",
-    gap: "10px",
-    marginRight: "16px",
-  },
-  headerText: {
-    fontSize: "16px",
-    fontFamily: "ProximaNova-Semibold",
-    display: "flex",
-  },
-  headerIcon: {
-    marginTop: "5px",
-  },
-  eachPostHeader: {
-    display: "flex",
-    padding: "12px",
-    alignItems: "flex-start",
-    gap: "8px",
-  },
-  profileName: {
-    fontFamily: "ProximaNova-Semibold",
-  },
-  postTime: {
-    fontSize: "12px",
-  },
-  followBtn: {
-    fontFamily: "ProximaNova-Semibold",
-    color: "#303ab2",
-    textTransform: "capitalize",
-    padding: "0",
-    justifyContent: "flex-start",
-    "&:hover": {
-      background: "transparent",
-    },
-  },
-  media: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  mediaImg: {
-    width: "100%",
-  },
-  taggedProducts: {
-    display: "flex",
-    gap: "10px",
-    alignItems: "center",
-    fontSize: "14px",
-    paddingLeft: "12px",
-    paddingBottom: "10px",
-  },
-  shopAllIcon: {
-    display: "inline-flex",
-    borderRadius: "20px",
-    borderColor: "#303ab2",
-    height: "fit-content",
-    width: "fit-content",
-    border: "2px solid #303ab2",
-    padding: "5px",
-  },
-  pillItem: {
-    display: "inline-flex",
-    gap: "8px",
-    border: "2px solid #ecedeb",
-    padding: "5px",
-    alignItems: "center",
-    borderRadius: "5px",
-  },
-  shopAllText: {
-    color: "#303ab2",
-    fontFamily: "ProximaNova-Semibold",
-  },
-  shopAll: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "10px",
-    fontSize: "14px",
-    whiteSpace: "nowrap",
-  },
-  discountAndRating: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexGrow: 1,
-    gap: "20px",
-  },
-  prdName: {
-    fontWeight: "600",
-    fontSize: "15px",
-  },
-  prdPrice: {
-    display: "flex",
-    fontSize: "14px",
-    gap: "4px",
-  },
-  discountPrice: {
-    textDecoration: "line-through",
-    color: "lightslategrey",
-  },
-  salePrice: {
-    fontFamily: "ProximaNova-Semibold",
-  },
-  productDetails: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-  },
-  rating: {
-    fontFamily: "ProximaNova-Semibold",
-    marginRight: "5px",
-  },
-  discount: {
-    fontFamily: "ProximaNova-Semibold",
-    color: "#FF5722",
-  },
-  ratingStar: {
-    marginLeft: "4px",
-  },
-  ulProductPill: {
-    display: "flex",
-    listStyle: "none",
-    overflow: "hidden",
-    overflowX: "scroll",
-    padding: 0,
-    margin: 0,
-    whiteSpace: "nowrap",
-    gap: "10px",
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-  },
-  likePost: {
-    display: "inline-flex",
-    gap: "4px",
-    alignItems: "center",
-  },
-  likeAndSavePost: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "0 12px",
-    alignItems: "center",
-    alignContent: "center",
-  },
-  postCaptionWithHashtags: {
-    padding: "8px 12px",
-    lineHeight: "1.5",
-  },
-  hashtags: {
-    fontFamily: "ProximaNova-Semibold",
-  },
-  profileIconImg: {
-    borderRadius: "50%",
-  },
-}));
+import styles from "../../styles/Feed.module.css";
 
 export default function Posts() {
-  const classes = useStyles();
+  
   const { feed } = data;
   const myInstaPosts = Array.from(feed.components)
     .filter((item) => item.type === "MynstaPost")
     .filter((item) => item.props.contentProps.elementId != "POST_VIDEO");
   return (
     <>
-      <Box className={classes.postHeader}>
-        <Box className={classes.headerLeft}>
-          <Box className={classes.headerIcon}>
+      <Box className={styles.postHeader}>
+        <Box className={styles.headerLeft}>
+          <Box className={styles.headerIcon}>
             <svg
               class="header-icon menu-icon"
               width="24"
@@ -213,7 +35,7 @@ export default function Posts() {
               ></path>
             </svg>
           </Box>
-          <Box className={classes.headerText}>
+          <Box className={styles.headerText}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="150"
@@ -245,8 +67,8 @@ export default function Posts() {
             </svg>
           </Box>
         </Box>
-        <Box className={classes.headerRight}>
-          <Box className={classes.headerIcon}>
+        <Box className={styles.headerRight}>
+          <Box className={styles.headerIcon}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -265,7 +87,7 @@ export default function Posts() {
               </g>
             </svg>
           </Box>
-          <Box className={classes.headerIcon}>
+          <Box className={styles.headerIcon}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
