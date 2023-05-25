@@ -56,7 +56,8 @@ const useStyles = makeStyles(() => ({
         color: "Black",
         "&:hover":{ 
             color: "#303ab2",
-        }
+        },
+        cursor: "pointer"
     },
     searchBox:{
         border: "none",
@@ -104,7 +105,7 @@ const Header = () => {
                         <a href="/ae/en/department/beauty" title="beauty" data-title="beauty" className={classes.navTitleLink}>Beauty</a>
                     </li>
                     <li className={classes.navTitleLink} onClick={() => router.push('/studio/feed')}>
-                        Studio
+                        Atelier
                     </li>
                 </ul>
                 <Box>
