@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import {Box,Button} from '@material-ui/core';
 import { useRouter } from 'next/navigation';
@@ -93,16 +94,16 @@ const Header = () => {
                 </Box>
                 <ul className={classes.navBarDepartments}>
                     <li>
-                        <a href="/ae/en/department/women" title="women" data-title="women" className={classes.navTitleLink}>Women</a>
+                        <a href="https://www.maxfashion.com/ae/en/department/women" title="women" data-title="women" className={classes.navTitleLink}>Women</a>
                     </li>
                     <li >
-                        <a href="/ae/en/department/mxkids" title="kids" data-title="kids" className={classes.navTitleLink}>Kids</a>
+                        <a href="https://www.maxfashion.com/ae/en/department/mxkids" title="kids" data-title="kids" className={classes.navTitleLink}>Kids</a>
                     </li>
                     <li >
-                        <a href="/ae/en/department/men" title="men" data-title="men" className={classes.navTitleLink}>Men</a>
+                        <a href="https://www.maxfashion.com/ae/en/department/men" title="men" data-title="men" className={classes.navTitleLink}>Men</a>
                     </li>
                     <li >
-                        <a href="/ae/en/department/beauty" title="beauty" data-title="beauty" className={classes.navTitleLink}>Beauty</a>
+                        <a href="https://www.maxfashion.com/ae/en/department/beauty" title="beauty" data-title="beauty" className={classes.navTitleLink}>Beauty</a>
                     </li>
                     <li className={classes.navTitleLink} onClick={() => router.push('/studio/feed')}>
                         Atelier
@@ -115,12 +116,12 @@ const Header = () => {
             </Box>       
             <Box className={classes.navBarRight}>
                 <span className={classes.accountActions} id="account-actions">
-                    <a className={classes.navTitleLink} id="account-actions-signup" href="#" data-href="/ae/en/register" class="signin new" data-initiatedby="signup">Sign Up</a>
+                    <a className={classes.navTitleLink} id="account-actions-signup" href="https://www.maxfashion.com/ae/en/register" data-href="https://www.maxfashion.com/ae/en/register" class="signin new" data-initiatedby="signup">Sign Up</a>
                     <span className={classes.SiginOr}>or</span>
-                    <a className={classes.navTitleLink} id="account-actions-signin" href="#" data-href="/ae/en/login" class="signin flip-enable new" data-initiatedby="signin">Sign In</a>
+                    <a className={classes.navTitleLink} id="account-actions-signin" href="https://www.maxfashion.com/ae/en/login" data-href="https://www.maxfashion.com/ae/en/login" class="signin flip-enable new" data-initiatedby="signin">Sign In</a>
                 </span>
 
-                <Button class="MuiButtonBase-root MuiButton-root MuiButton-text jss150" tabindex="0" type="button">
+                <Button href='https://www.maxfashion.com/ae/en/cart' class="MuiButtonBase-root MuiButton-root MuiButton-text jss150" tabindex="0" type="button">
                     <span class="MuiButton-label">
                         <div class="MuiBox-root jss154">Basket</div>
                         <Image alt="" src="https://i1.lmsin.net/website_images/static-pages/brand_exp/images/basket-black-24.svg" width="16" height="16"/>

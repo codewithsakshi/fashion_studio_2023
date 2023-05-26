@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'assets.myntassets.com',
+            port: '',
+            pathname: '/assets/images/**',
+          },
+        ],
+    },
+}
 
 module.exports = nextConfig

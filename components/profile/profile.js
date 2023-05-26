@@ -17,7 +17,7 @@ export default function Profile() {
       <div className={styles.profilePage}>
         <Box className={styles.postHeader}>
           <Box className={styles.headerLeft}>
-            <Box className={styles.headerIcon}>
+            <Box className={styles.headerIcon} onClick={()=>{history.back();}}>
               <svg
                 class="header-icon menu-icon"
                 width="24"

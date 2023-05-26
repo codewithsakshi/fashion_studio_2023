@@ -1,27 +1,18 @@
 import React from "react";
-import data from "@/utilities/data";
-import { Box, makeStyles, Button } from "@material-ui/core";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Box, Button } from "@material-ui/core";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../public/styles/post.css";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
-import parse from "html-react-parser";
 import EachPost from "./eachPost";
 import styles from "../../styles/Feed.module.css";
 
 export default function Posts() {
-  
-  const { feed } = data;
-  const myInstaPosts = Array.from(feed.components)
-    .filter((item) => item.type === "MynstaPost")
-    .filter((item) => item.props.contentProps.elementId != "POST_VIDEO");
   return (
     <>
       <Box className={styles.postHeader}>
         <Box className={styles.headerLeft}>
-          <Box className={styles.headerIcon}>
+          <Box className={styles.headerIcon} onClick={()=>{history.back();}}>
             <svg
               class="header-icon menu-icon"
               width="24"

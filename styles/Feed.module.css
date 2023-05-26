@@ -57,15 +57,15 @@
 }
 
 .followBtn {
-    font-family: ProximaNova-Semibold;
-    color: #303ab2;
-    text-transform: capitalize;
-    padding: 0;
-    justify-content: flex-start;
+    font-family: ProximaNova-Semibold !important;
+    color: #303ab2 !important;
+    text-transform: capitalize !important;
+    padding: 0 !important;
+    justify-content: flex-start !important;
 }
 
 .followBtn:hover {
-    background: transparent;
+    background: transparent !important;
 }
 
 .media {
@@ -163,7 +163,14 @@
 }
 
 .ratingStar {
-    margin-left: 4px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    align-content: center;
+}
+.eachPostIconAndName{
+    display: flex;
+    gap: 10px;
 }
 
 .ulProductPill {

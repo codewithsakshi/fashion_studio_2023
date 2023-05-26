@@ -9,6 +9,7 @@ import "../../public/styles/post.css";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import parse from "html-react-parser";
 import styles from "../../styles/Feed.module.css";
+import Image from "next/image";
 
 export default function EachPost() {
   const { feed } = data;
@@ -26,22 +27,24 @@ export default function EachPost() {
             <li key={index} className={styles.listItem}>
               <Box className={styles.eachPost}>
                 <Box className={styles.eachPostHeader}>
-                  <Box className={styles.profileIcon}>
-                    <img
-                      className={styles.profileIconImg}
-                      alt=""
-                      width="38"
-                      height="38"
-                      draggable="false"
-                      src={titleProps.author.profileImage.src}
-                    />
-                  </Box>
-                  <Box className={styles.nameAndTime}>
-                    <Box className={styles.profileName}>
-                      {titleProps.author.name}
+                  <Box className={styles.eachPostIconAndName} onClick={() => window.open("/studio/profile","_self")}>
+                    <Box className={styles.profileIcon}>
+                      <Image
+                        className={styles.profileIconImg}
+                        alt=""
+                        width="38"
+                        height="38"
+                        draggable="false"
+                        src={titleProps.author.profileImage.src}
+                      />
                     </Box>
-                    <Box className={styles.postTime}>
-                      {titleProps.subTitle}
+                    <Box className={styles.nameAndTime}>
+                      <Box className={styles.profileName}>
+                        {titleProps.author.name}
+                      </Box>
+                      <Box className={styles.postTime}>
+                        {titleProps.subTitle}
+                      </Box>
                     </Box>
                   </Box>
                   <Box
@@ -60,6 +63,8 @@ export default function EachPost() {
                   <>
                     <Swiper
                       cssMode={true}
+                      // autoHeight={true}
+                      // spaceBetween={20}
                       navigation={false}
                       pagination={true}
                       mousewheel={true}
@@ -86,7 +91,7 @@ export default function EachPost() {
                       ))}
                       <SwiperSlide>
                         <video
-                          height={"673px"}
+                          height={"fit-content"}
                           width={"100%"}
                           autoplay
                           poster="https://i8.amplience.net/v/landmarkpoc/Max MW V1"
@@ -130,7 +135,7 @@ export default function EachPost() {
                   </Box>
                   <ul className={styles.ulProductPill}>
                     {contentProps.productPills.map((item, index) => (
-                      <li key={index} className={styles.pillItem}>
+                      <li key={index} className={styles.pillItem} onClick={()=>{window.open("https://www.maxfashion.com/ae/en/p/B23WCTFEKTRTEEX184DWHITELIGHT","_self")}}>
                         <picture>
                           <source
                             type="image/webp"
@@ -148,12 +153,12 @@ export default function EachPost() {
                         <Box className={styles.productDetails}>
                           <Box className={styles.prdName}>{item.brand}</Box>
                           <Box className={styles.prdPrice}>
-                            <span
+                          {item.mrp && <span
                               className={styles.discountPrice}
-                            >{`AED ${parseInt(item.mrp / 22)}`}</span>
-                            <span
+                            >{`AED ${parseInt(item.mrp / 22)}`}</span>}
+                            {item.price && <span
                               className={styles.salePrice}
-                            >{`AED ${parseInt(item.price / 22)}`}</span>
+                            >{`AED ${parseInt(item.price / 22)}`}</span>}
                           </Box>
                           <Box className={styles.discountAndRating}>
                             <Box className={styles.discount}>
@@ -163,8 +168,9 @@ export default function EachPost() {
                                   .replace(")", "")}
                             </Box>
                             <Box className={styles.rating}>
-                              {item.rating ? item.rating : ""}
+                              { item.rating ?
                               <span className={styles.ratingStar}>
+                                <span>{item.rating}</span>
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 24 24"
@@ -176,7 +182,8 @@ export default function EachPost() {
                                   <path d="M0 0h24v24H0z" fill="none"></path>
                                   <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
                                 </svg>
-                              </span>
+                              </span> : <></>}
+                                
                             </Box>
                           </Box>
                         </Box>
